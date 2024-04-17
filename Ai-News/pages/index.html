@@ -23,15 +23,15 @@
     <section id="hero">
         <h2>Welcome to our AI News Website</h2>
         <p>Stay updated with the latest news in Artificial Intelligence</p>
-        <form>
-            <input type="text" name="search" placeholder="Search news">
+        <form id="search-form">
+            <input type="text" id="search-input" name="search" placeholder="Search news">
             <button type="submit">Search</button>
         </form>
     </section>
 
     <section id="latest-news">
         <h2>Latest AI News</h2>
-        <ul>
+        <ul id="articles-list">
             <li><a href="article1.html" target="_blank">
                 <h3>AI Advancements in Healthcare</h3>
                 <p>Recent breakthroughs in AI have led to significant improvements in diagnosing diseases and personalized treatment plans.</p>
@@ -55,6 +55,23 @@
         <p>&copy; 2024 Ginja Tech AI News Website</p>
     </footer>
 
-    
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const articles = document.querySelectorAll('#articles-list li');
+
+            articles.forEach(function(article) {
+                const title = article.querySelector('h3').textContent.toLowerCase();
+                const description = article.querySelector('p').textContent.toLowerCase();
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
