@@ -1,5 +1,4 @@
 // article1.js
-
 var isReading = false; // Variable to track if speech synthesis is in progress
 
 function readArticle() {
